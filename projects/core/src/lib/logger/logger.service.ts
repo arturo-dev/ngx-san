@@ -3,8 +3,12 @@ import { CoreModule } from '../core.module';
 import { LoggerLevel } from './logger.config';
 
 /**
- * @description
  *  Service to log in console, also can be configured to send traces to and Api
+ *
+ * @example
+ *  this.logger.info('Doing something to trace with', {id: 1, name: 'foo'});
+ *  this.logger.debug('Debuging something');
+ *
  */
 @Injectable()
 export class LoggerService {
