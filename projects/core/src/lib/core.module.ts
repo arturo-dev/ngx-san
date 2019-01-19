@@ -1,10 +1,45 @@
-import { NgModule } from '@angular/core';
-import { CoreComponent } from './core.component';
+import {
+  NgModule,
+  ModuleWithProviders,
+  Provider,
+  Optional,
+  SkipSelf
+} from '@angular/core';
+import { CoreConfig } from './core.config';
+import { HttpClientModule } from '@angular/common/http';
 
+/**
+ *
+ * @description Contains the core services:
+ *  - Api
+ *  - Logger
+ */
 @NgModule({
-  imports: [
-  ],
-  declarations: [CoreComponent],
-  exports: [CoreComponent]
+  imports: [HttpClientModule],
+  declarations: [],
+  exports: []
 })
-export class CoreModule { }
+export class CoreModule {
+  private static _config: CoreConfig;
+
+  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
+    if (parentModule) {
+      throw new Error(
+        'CoreModule is already loaded. Import it in the AppModule only'
+      );
+    }
+  }
+
+  static forRoot(config?: CoreConfig): ModuleWithProviders {
+    this._config = config || new CoreConfig();
+
+    return {
+      ngModule: CoreModule,
+      providers: []
+    };
+  }
+
+  static get config(): CoreConfig {
+    return this._config;
+  }
+}
