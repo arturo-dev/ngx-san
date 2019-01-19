@@ -11,7 +11,9 @@
     "docs:gen": "compodoc -p tsconfig.json",
     "docs:serve": "compodoc src -s",
     "core:build": "ng build --prod --project=core",
-    "core:test": "ng test --project=core"
+    "core:test": "ng test --project=core",
+    "presn:build": "ng build --prod --project=presentation",
+    "presn:test": "ng test --project=presentation"
   },
   "private": true,
   "dependencies": {

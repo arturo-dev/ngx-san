@@ -7,6 +7,8 @@ import {
 } from '@angular/core';
 import { CoreConfig } from './core.config';
 import { HttpClientModule } from '@angular/common/http';
+import { LoggerService } from './logger/logger.service';
+import { ApiService } from './api/api.service';
 
 /**
  *
@@ -17,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   imports: [HttpClientModule],
   declarations: [],
-  exports: []
+  exports: [],
+  providers: [ApiService, LoggerService]
 })
 export class CoreModule {
   private static _config: CoreConfig;

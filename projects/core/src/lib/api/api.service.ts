@@ -8,9 +8,7 @@ import { LoggerService } from '../logger/logger.service';
 /**
  * @description Service to interact with the api
  */
-@Injectable({
-  providedIn: CoreModule
-})
+@Injectable()
 export class ApiService {
   public static URI = ``;
 

@@ -6,9 +6,7 @@ import { LoggerLevel } from './logger.config';
  * @description
  *  Service to log in console, also can be configured to send traces to and Api
  */
-@Injectable({
-  providedIn: CoreModule
-})
+@Injectable()
 export class LoggerService {
   private STYLES_COMMON = 'color: white; border-radius: 2px;';
   private STYLES_INFO = `${this.STYLES_COMMON} background-color: #0077c2;`;
