@@ -1,6 +1,12 @@
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 
-export class ApiConfig {}
+export class ApiConfig {
+  url: string;
+  services: {
+    language: string;
+    user: string;
+  };
+}
 
 export class ApiGetOptions {
   headers?: HttpHeaders | { [header: string]: string | string[] };

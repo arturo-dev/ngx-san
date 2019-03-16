@@ -1,7 +1,7 @@
 export class LoggerConfig {
-  enabled: boolean;
-  level: LoggerLevel = LoggerLevel.INFO;
-  tracert: URL;
+  enabled?: boolean;
+  level?: LoggerLevel = LoggerLevel.INFO;
+  tracert?: URL;
 }
 
 export enum LoggerLevel {

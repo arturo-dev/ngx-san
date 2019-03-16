@@ -1,14 +1,15 @@
 import {
   NgModule,
   ModuleWithProviders,
-  Provider,
   Optional,
   SkipSelf
 } from '@angular/core';
-import { CoreConfig } from './core.config';
+import { CoreConfig, Config } from './core.config';
 import { HttpClientModule } from '@angular/common/http';
 import { LoggerService } from './logger/logger.service';
 import { ApiService } from './api/api.service';
+import { LanguageModule } from './language/language.module';
+import { LanguagePipe } from './language/language.pipe';
 
 /**
  *
@@ -17,14 +18,10 @@ import { ApiService } from './api/api.service';
  *  - Logger
  */
 @NgModule({
-  imports: [HttpClientModule],
-  declarations: [],
-  exports: [],
+  imports: [HttpClientModule, LanguageModule],
   providers: [ApiService, LoggerService]
 })
 export class CoreModule {
-  private static _config: CoreConfig;
-
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
     if (parentModule) {
       throw new Error(
@@ -33,16 +30,16 @@ export class CoreModule {
     }
   }
 
-  static forRoot(config?: CoreConfig): ModuleWithProviders {
-    this._config = config || new CoreConfig();
-
+  static forRoot(config?: { environment: CoreConfig }): ModuleWithProviders {
     return {
       ngModule: CoreModule,
-      providers: []
+      providers: [
+        {
+          provide: Config,
+          useValue:
+            config.environment || (<any>window).environment || new CoreConfig()
+        }
+      ]
     };
-  }
-
-  static get config(): CoreConfig {
-    return this._config;
   }
 }

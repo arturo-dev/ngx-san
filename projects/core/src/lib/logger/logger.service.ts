@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
-import { CoreModule } from '../core.module';
+import { Injectable, Inject } from '@angular/core';
 import { LoggerLevel } from './logger.config';
+import { TraceService } from './trace/trace.service';
+import { CoreConfig, Config } from '../core.config';
 
 /**
  *  Service to log in console, also can be configured to send traces to and Api
@@ -17,8 +18,11 @@ export class LoggerService {
   private STYLES_ERROR = `${this.STYLES_COMMON} background-color: #F44336;`;
   private STYLES_DEBUG = `${this.STYLES_COMMON} background-color: #F57C00;`;
 
-  constructor() {
-    this.info(`Instantiating logger with config`, CoreModule.config.logger);
+  constructor(
+    private trace: TraceService,
+    @Inject(Config) private config: CoreConfig
+  ) {
+    this.info(`Instantiating logger with config`, this.config.logger);
   }
 
   /**
@@ -30,10 +34,12 @@ export class LoggerService {
     console.info('%c[INFO]', this.STYLES_INFO, ...args);
 
     if (
-      CoreModule.config.logger.enabled &&
-      CoreModule.config.logger.level === LoggerLevel.INFO
+      this.config &&
+      this.config.logger &&
+      this.config.logger.enabled &&
+      this.config.logger.level === LoggerLevel.INFO
     ) {
-      // TODO: trace
+      this.trace.send({ mode: 'INFO', info: args });
     }
   }
 
@@ -46,10 +52,12 @@ export class LoggerService {
     console.info('%c[ERROR]', this.STYLES_ERROR, ...args);
 
     if (
-      CoreModule.config.logger.enabled &&
-      CoreModule.config.logger.level === LoggerLevel.INFO
+      this.config &&
+      this.config.logger &&
+      this.config.logger.enabled &&
+      this.config.logger.level === LoggerLevel.INFO
     ) {
-      // TODO: trace
+      this.trace.send({ mode: 'ERROR', info: args });
     }
   }
 
@@ -62,10 +70,12 @@ export class LoggerService {
     console.info('%c[DEBUG]', this.STYLES_DEBUG, ...args);
 
     if (
-      CoreModule.config.logger.enabled &&
-      CoreModule.config.logger.level === LoggerLevel.INFO
+      this.config &&
+      this.config.logger &&
+      this.config.logger.enabled &&
+      this.config.logger.level === LoggerLevel.INFO
     ) {
-      // TODO: trace
+      this.trace.send({ mode: 'DEBUG', info: args });
     }
   }
 }

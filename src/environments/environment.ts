@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  api: {
+    url: 'http://localhost:8080/mocks',
+    services: {
+      language: '/ngx-language-api',
+      user: '/ngx-user-api'
+    }
+  },
+  logger: {
+    enabled: true
+  }
 };
 
 /*

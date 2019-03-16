@@ -10,7 +10,7 @@
     "e2e": "ng e2e",
     "docs:gen": "compodoc -p tsconfig.json",
     "docs:serve": "compodoc src -s",
-    "core:build": "ng build --prod --project=core",
+    "core:build": "ng build --project=core",
     "core:test": "ng test --project=core",
     "presn:build": "ng build --prod --project=presentation",
     "presn:test": "ng test --project=presentation"
@@ -25,7 +25,11 @@
     "@angular/http": "^6.1.0",
     "@angular/platform-browser": "^6.1.0",
     "@angular/platform-browser-dynamic": "^6.1.0",
+    "@angular/pwa": "^0.8.9",
     "@angular/router": "^6.1.0",
+    "@angular/service-worker": "^6.1.0",
+    "@ngx-translate/core": "^11.0.0",
+    "@ngx-translate/http-loader": "^4.0.0",
     "core-js": "^2.5.4",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"

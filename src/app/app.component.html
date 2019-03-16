@@ -9,5 +9,7 @@
 </div>
 
 <san-presn-input type="text" disabled="true" *sanPresnLoading="loading">
-  <span preffix>Label before</span> <span suffix>Label after</span>
+  <span preffix>{{ 'foo' | language }}</span> <span suffix>Label after</span>
 </san-presn-input>
+
+<router-outlet></router-outlet>
