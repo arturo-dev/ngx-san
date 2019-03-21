@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LoggerService } from '../../logger/logger.service';
 import { LanguageService } from '../../language/language.service';
+import { Error, ErrorMessage } from '../../error/error';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class InitLangService {
         () => {
           resolve();
         },
-        () => reject()
+        () => reject(new Error(ErrorMessage.BOOT_LANG, new Date()))
       );
     });
   }

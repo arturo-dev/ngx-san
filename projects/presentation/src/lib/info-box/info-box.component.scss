@@ -1,0 +1,52 @@
+@import './../_styles/variables.scss';
+
+:host {
+  section {
+    display: flex;
+    align-items: center;
+    padding: 12px 17px;
+
+    .content {
+      font-size: 15px;
+      font-weight: 600;
+      color: $primary-text-color;
+    }
+  }
+
+  i {
+    display: none;
+    vertical-align: middle;
+    margin-right: 12px;
+    font-weight: bold;
+  }
+
+  &[error] section {
+    background-color: rgba(209, 84, 1, 0.08);
+    border: 1px solid rgba(209, 84, 1, 0.41);
+
+    i.error-icon {
+      display: block;
+      color: rgba(209, 84, 1, 0.41);
+    }
+  }
+
+  &[correct] section {
+    background-color: #f1f9e8;
+    border: 1px solid #c3e69d;
+
+    i.correct-icon {
+      color: #c3e69d;
+      display: block;
+    }
+  }
+
+  &[alert] section {
+    background-color: $primary-color-light;
+    border: 1px solid $accent-color;
+
+    i.alert-icon {
+      color: $primary-color;
+      display: block;
+    }
+  }
+}

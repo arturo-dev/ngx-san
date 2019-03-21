@@ -39,6 +39,11 @@ export class LoggerService {
       this.config.logger.enabled &&
       this.config.logger.level === LoggerLevel.INFO
     ) {
+      // tslint:disable-next-line:no-console
+      console.info('%c[INFO]', this.STYLES_INFO, 'Sending trace', {
+        mode: 'INFO',
+        info: args
+      });
       this.trace.send({ mode: 'INFO', info: args });
     }
   }
@@ -55,8 +60,13 @@ export class LoggerService {
       this.config &&
       this.config.logger &&
       this.config.logger.enabled &&
-      this.config.logger.level === LoggerLevel.INFO
+      this.config.logger.level === LoggerLevel.ERROR
     ) {
+      // tslint:disable-next-line:no-console
+      console.info('%c[INFO]', this.STYLES_INFO, 'Sending trace', {
+        mode: 'ERROR',
+        info: args
+      });
       this.trace.send({ mode: 'ERROR', info: args });
     }
   }
@@ -73,8 +83,13 @@ export class LoggerService {
       this.config &&
       this.config.logger &&
       this.config.logger.enabled &&
-      this.config.logger.level === LoggerLevel.INFO
+      this.config.logger.level === LoggerLevel.DEBUG
     ) {
+      // tslint:disable-next-line:no-console
+      console.info('%c[INFO]', this.STYLES_INFO, 'Sending trace', {
+        mode: 'DEBUG',
+        info: args
+      });
       this.trace.send({ mode: 'DEBUG', info: args });
     }
   }

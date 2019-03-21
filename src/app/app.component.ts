@@ -13,6 +13,6 @@ export class AppComponent {
   constructor(private logger: LoggerService) {
     setTimeout(() => {
       this.loading = false;
-    }, 4000);
+    });
   }
 }

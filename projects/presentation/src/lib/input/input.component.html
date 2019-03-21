@@ -1,8 +1,14 @@
-<ng-content select="[preffix]"></ng-content>
-<input
-  [type]="type"
-  [value]="value ? value : ''"
-  [placeholder]="placeholder"
-  [disabled]="disabled"
-/>
-<ng-content select="[suffix]"></ng-content>
+<div class="form-group">
+  <input
+    id="input"
+    [type]="type"
+    [value]="value ? value : ''"
+    [placeholder]="placeholder"
+    class="form-control"
+    required="false"
+  />
+  <label class="form-control-placeholder">
+    <ng-content select="[label]"></ng-content>
+  </label>
+  <ng-content select="[suffix]"></ng-content>
+</div>

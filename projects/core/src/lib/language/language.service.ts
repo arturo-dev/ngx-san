@@ -21,12 +21,17 @@ export class LanguageService {
   }
 
   setDefaultLang(lang: string): void {
-    this.logger.debug('Setting default language as', lang);
-    this.doc.documentElement.setAttribute(this.ATTR_DOC_LANGUAGE, lang);
+    this.setDocLang(lang);
     this.translate.setDefaultLang(lang);
   }
 
   use(lang: string): Observable<any> {
+    this.setDocLang(lang);
     return this.translate.use(lang);
+  }
+
+  private setDocLang(lang: string): void {
+    this.logger.debug('Setting default language as', lang);
+    this.doc.documentElement.setAttribute(this.ATTR_DOC_LANGUAGE, lang);
   }
 }

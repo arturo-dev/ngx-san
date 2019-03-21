@@ -1,6 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>Welcome to {{ title }}!</h1>
+  <h1>Welcome to {{ title }}</h1>
   <img
     width="300"
     alt="Angular Logo"
@@ -8,8 +8,50 @@
   />
 </div>
 
-<san-presn-input type="text" disabled="true" *sanPresnLoading="loading">
-  <span preffix>{{ 'foo' | language }}</span> <span suffix>Label after</span>
-</san-presn-input>
+<div>
+  <h1>Buttons</h1>
+  <san-presn-button primary>BOTON</san-presn-button>
+  <san-presn-button secondary>BOTON</san-presn-button>
+  <san-presn-button terciary>BOTON</san-presn-button>
+</div>
+
+<div>
+  <h1>Links</h1>
+  <san-presn-link primary>Link</san-presn-link>
+  <san-presn-link secondary>Link</san-presn-link>
+  <san-presn-link terciary>Link</san-presn-link>
+</div>
+
+<div>
+  <h1>Info box</h1>
+  <san-presn-info-box error>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce egestas, nisl
+    tempor finibus dignissim, massa est cursus orci, sit amet placerat nunc
+    risus et arcu. Sed et pulvinar ante, in tincidunt odio.
+  </san-presn-info-box>
+  <san-presn-info-box correct>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  </san-presn-info-box>
+  <san-presn-info-box alert>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce egestas, nisl
+    tempor finibus dignissim, massa est cursus orci, sit amet placerat nunc
+    risus et arcu. Sed et pulvinar ante, in tincidunt odio.
+  </san-presn-info-box>
+</div>
+
+<div>
+  <h1>Inputs</h1>
+  <san-presn-input type="text" *sanPresnLoading="loading">
+    <span label>{{ 'foo' | language }}</span>
+    <!--<span suffix>Label after</span>-->
+  </san-presn-input>
+</div>
 
 <router-outlet></router-outlet>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

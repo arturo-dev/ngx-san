@@ -2,7 +2,8 @@ import {
   NgModule,
   ModuleWithProviders,
   Optional,
-  SkipSelf
+  SkipSelf,
+  ErrorHandler
 } from '@angular/core';
 import { CoreConfig, Config } from './core.config';
 import { HttpClientModule } from '@angular/common/http';
@@ -10,16 +11,27 @@ import { LoggerService } from './logger/logger.service';
 import { ApiService } from './api/api.service';
 import { LanguageModule } from './language/language.module';
 import { LanguagePipe } from './language/language.pipe';
+import { ErrorHandlerService } from './error/error-handler.service';
 
 /**
  *
  * @description Contains the core services:
  *  - Api
+ *  - Error
+ *  - Initialization
+ *  - Language
  *  - Logger
+ *  - Storage
+ *  - User
  */
 @NgModule({
   imports: [HttpClientModule, LanguageModule],
-  providers: [ApiService, LoggerService]
+  providers: [
+    ApiService,
+    LoggerService,
+    { provide: ErrorHandler, useClass: ErrorHandlerService }
+  ],
+  declarations: []
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

@@ -1,0 +1,28 @@
+.form-group {
+  position: relative;
+  margin: 1.5rem 0px;
+
+  input {
+    height: 24px;
+    border-radius: 4px;
+    outline: solid 0px red;
+    transition: outline 200ms ease;
+  }
+
+  .form-control-placeholder {
+    position: absolute;
+    top: 5px;
+    left: 8px;
+    transition: all 200ms;
+    opacity: 0.5;
+  }
+
+  .form-control:focus + .form-control-placeholder,
+  .form-control:valid + .form-control-placeholder {
+    transform: translate3d(0, -100%, 0);
+    opacity: 1;
+    top: -5px;
+
+    outline: solid 2px red;
+  }
+}

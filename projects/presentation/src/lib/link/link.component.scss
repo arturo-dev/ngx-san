@@ -1,0 +1,35 @@
+@import './../_styles/variables.scss';
+
+:host {
+  margin: 7px;
+  font-size: 15px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  cursor: pointer;
+
+  &[primary] {
+    color: $primary-color;
+    text-decoration: underline;
+  }
+
+  &[secondary] {
+    color: $accent-color;
+  }
+
+  &[terciary] {
+    color: $accent-color;
+    font-weight: bold;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &:hover {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}
